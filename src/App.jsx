@@ -7,12 +7,11 @@ function App() {
   const [projects, setProjects] = useState([{}]);
 
   return (
-    <>
-      <h1 className="my-8 text-center text-5xl font-bold">Hello World</h1>
+    <main className="h-screen my-8 flex gap-8" >
       <SideBar projects={projects} />
       <ProjectForm projects={projects} setProjects={setProjects} />
       <Project />
-    </>
+    </main>
   );
 }
 

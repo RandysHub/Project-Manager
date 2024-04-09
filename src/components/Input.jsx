@@ -1,9 +1,10 @@
-const Input = ({ ref, label, labelClass, inputClass, ...props }) => {
+const Input = ({ ref, label, labelClass, inputClass, textArea, ...props }) => {
   return (
-    <>
+    <p>
       <label className={labelClass} >{label}</label>
-      <input ref={ref} className={inputClass}  {...props} />
-    </>
+
+      {textArea ? <textarea ref={ref} className={inputClass}  {...props} /> : <input ref={ref} className={inputClass}  {...props} />}
+    </p>
   )
 }
 

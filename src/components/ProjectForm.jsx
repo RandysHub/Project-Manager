@@ -26,9 +26,8 @@ export default function ProjectForm({ projects, setProjects }) {
 
   return (
     <form>
-
       <Input ref={name} inputClass={inputStyling} labelClass={labelStyling} label={'Name'} type='text' />
-      <Input ref={description} inputClass={inputStyling} labelClass={labelStyling} label={'Description'} type='text' />
+      <Input ref={description} inputClass={inputStyling} labelClass={labelStyling} label={'Description'} type='text' textArea={true} />
       <Input ref={dueDate} inputClass={inputStyling} labelClass={labelStyling} label={'Due Date'} type='date' />
       <button onClick={handleSave} className={buttonStyling}>Save</button>
       <button className={buttonStyling}>Cancel</button>
