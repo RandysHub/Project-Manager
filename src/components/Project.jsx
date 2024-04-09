@@ -6,4 +6,4 @@ const Project = ({ name, description, dueDate }) => {
   )
 }
 
-export default Project
+export default Project 

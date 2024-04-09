@@ -2,15 +2,19 @@ import React, { useState } from 'react'
 import SideBar from "./components/SideBar";
 import ProjectForm from './components/ProjectForm';
 import Project from './components/Project';
+import NoProjectSelected from './components/NoProjectSelected';
 
 function App() {
   const [projects, setProjects] = useState([{}]);
+  const [creatingProject, setCreatingProject] = useState(false);
+  const [currentProject, setCurrentProject] = useState({});
 
   return (
     <main className="h-screen my-8 flex gap-8" >
-      <SideBar projects={projects} />
-      <ProjectForm projects={projects} setProjects={setProjects} />
+      <SideBar projects={projects} setCurrentProject={setCurrentProject} currentProject={currentProject} />
+      {creatingProject && <ProjectForm projects={projects} setProjects={setProjects} />}
       <Project />
+      {!creatingProject && <NoProjectSelected setCreatingProject={setCreatingProject} />}
     </main>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import Input from './Input'
 
-export default function ProjectForm({ projects, setProjects }) {
+const ProjectForm = function ProjectForm({ projects, setProjects }) {
 
 
   const name = useRef();
@@ -36,6 +36,7 @@ export default function ProjectForm({ projects, setProjects }) {
   )
 }
 
+export default ProjectForm;
 
 // Form with:
 // -Name
