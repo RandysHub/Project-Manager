@@ -6,9 +6,11 @@ const Project = ({ currentProject, setCurrentProject }) => {
 
 
   function addTask() {
-    setCurrentProject({
-      ...currentProject,
-      tasks: [input.current.value, ...currentProject.tasks]
+    setCurrentProject((proj) => {
+      return {
+        ...proj,
+        tasks: [input.current.value, ...currentProject.tasks]
+      }
     })
     console.log(currentProject);
 

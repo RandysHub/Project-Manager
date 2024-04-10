@@ -6,15 +6,28 @@ import NoProjectSelected from './components/NoProjectSelected';
 
 function App() {
   const [projects, setProjects] = useState([{}]);
-  const [creatingProject, setCreatingProject] = useState(false);
+  const [content, setContent] = useState('none');
   const [currentProject, setCurrentProject] = useState();
+
+  let display;
+
+
+
+  if (content === 'creating') {
+    display = <ProjectForm projects={projects} setProjects={setProjects} setContent={setContent} />
+  } else if (content === 'show') {
+    display = <Project currentProject={currentProject} setCurrentProject={setCurrentProject} />
+  } else {
+    display = <NoProjectSelected setContent={setContent} />
+  }
+
+
+
 
   return (
     <main className="h-screen my-8 flex gap-8" >
-      <SideBar projects={projects} setCreatingProject={setCreatingProject} setCurrentProject={setCurrentProject} currentProject={currentProject} />
-      {creatingProject && <ProjectForm projects={projects} setProjects={setProjects} setCreatingProject={setCreatingProject} />}
-      {currentProject && <Project currentProject={currentProject} setCurrentProject={setCurrentProject} />}
-      {!creatingProject && !currentProject && <NoProjectSelected setCreatingProject={setCreatingProject} />}
+      <SideBar projects={projects} setContent={setContent} setCurrentProject={setCurrentProject} currentProject={currentProject} />
+      {display}
     </main>
   );
 }
