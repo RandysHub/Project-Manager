@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import Input from './Input'
 
-const ProjectForm = function ProjectForm({ projects, setProjects }) {
+const ProjectForm = function ProjectForm({ projects, setProjects, setCreatingProject }) {
 
 
   const name = useRef();
@@ -16,6 +16,7 @@ const ProjectForm = function ProjectForm({ projects, setProjects }) {
       description: description.current.value,
       dueDate: dueDate.current.value
     }])
+    setCreatingProject(false);
   }
 
   console.log(projects);

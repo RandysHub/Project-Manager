@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function SideBar({ projects, currentProject, setCurrentProject }) {
+export default function SideBar({ projects, currentProject, setCurrentProject, setCreatingProject }) {
 
 
   return (
@@ -8,7 +8,7 @@ export default function SideBar({ projects, currentProject, setCurrentProject })
       <h2 className='mb-8 font-bold uppercase md:text-xl text-stone-200'>Your Projects</h2>
       <div>
         {currentProject && <h3>{currentProject.name}</h3>}
-        <button className='px-4 py-2 text-xs md:text-base rounded-md bg-stone-700 text-stone-400 hover:bg-stone-600 hover:text-stone-100'>Add Project</button>
+        <button onClick={setCreatingProject} className='px-4 py-2 text-xs md:text-base rounded-md bg-stone-700 text-stone-400 hover:bg-stone-600 hover:text-stone-100'>Add Project</button>
       </div>
       <ul>
         {projects.map((project) => <li onClick={() => setCurrentProject(project)} >{project.name}</li>)}

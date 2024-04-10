@@ -7,14 +7,14 @@ import NoProjectSelected from './components/NoProjectSelected';
 function App() {
   const [projects, setProjects] = useState([{}]);
   const [creatingProject, setCreatingProject] = useState(false);
-  const [currentProject, setCurrentProject] = useState({});
+  const [currentProject, setCurrentProject] = useState();
 
   return (
     <main className="h-screen my-8 flex gap-8" >
-      <SideBar projects={projects} setCurrentProject={setCurrentProject} currentProject={currentProject} />
-      {creatingProject && <ProjectForm projects={projects} setProjects={setProjects} />}
-      <Project />
-      {!creatingProject && <NoProjectSelected setCreatingProject={setCreatingProject} />}
+      <SideBar projects={projects} setCreatingProject={setCreatingProject} setCurrentProject={setCurrentProject} currentProject={currentProject} />
+      {creatingProject && <ProjectForm projects={projects} setProjects={setProjects} setCreatingProject={setCreatingProject} />}
+      {currentProject && <Project currentProject={currentProject} />}
+      {!creatingProject && !currentProject && <NoProjectSelected setCreatingProject={setCreatingProject} />}
     </main>
   );
 }
