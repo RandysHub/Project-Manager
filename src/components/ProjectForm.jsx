@@ -14,7 +14,8 @@ const ProjectForm = function ProjectForm({ projects, setProjects, setCreatingPro
     setProjects([...projects, {
       name: name.current.value,
       description: description.current.value,
-      dueDate: dueDate.current.value
+      dueDate: dueDate.current.value,
+      tasks: []
     }])
     setCreatingProject(false);
   }
