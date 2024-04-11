@@ -26,7 +26,7 @@ function App() {
 
   return (
     <main className="h-screen my-8 flex gap-8" >
-      <SideBar projects={projects} setContent={setContent} setCurrentProject={setCurrentProject} currentProject={currentProject} />
+      <SideBar projects={projects} setContent={setContent} setCurrentProject={setCurrentProject} currentProject={currentProject} content={content} />
       {display}
     </main>
   );
