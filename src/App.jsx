@@ -12,14 +12,15 @@ function App() {
   let display;
 
   function handleDelete() {
-    setProjects(projects.filter(project => project.id !== currentProject.id))
+    setProjects(projects.filter(project => project.id !== currentProject.id));
+    setContent('none');
   }
 
 
   if (content === 'creating') {
     display = <ProjectForm projects={projects} setProjects={setProjects} setContent={setContent} />
   } else if (content === 'show') {
-    display = <Project currentProject={currentProject} setCurrentProject={setCurrentProject} handleDelete={handleDelete} />
+    display = <Project projects={projects} setProjects={setProjects} currentProject={currentProject} setCurrentProject={setCurrentProject} handleDelete={handleDelete} />
   } else {
     display = <NoProjectSelected setContent={setContent} />
   }

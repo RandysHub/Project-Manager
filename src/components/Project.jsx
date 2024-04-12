@@ -1,7 +1,7 @@
 import { useRef } from "react"
-import Input from "./Input";
+import Tasks from "./Tasks";
 
-const Project = ({ currentProject, setCurrentProject, handleDelete }) => {
+const Project = ({ projects, setProjects, currentProject, setCurrentProject, handleDelete }) => {
 
   const input = useRef();
 
@@ -15,11 +15,21 @@ const Project = ({ currentProject, setCurrentProject, handleDelete }) => {
     setCurrentProject((proj) => {
       return {
         ...proj,
-        tasks: [input.current.value, ...currentProject.tasks]
+        tasks: [...currentProject.tasks, input.current.value]
       }
     })
-    console.log(currentProject);
+    syncState();
+    console.log(currentProject.tasks);
+  }
 
+
+  function syncState() {
+    setProjects(() => {
+      let newArray = projects.filter((proj) => proj.id !== currentProject.id)
+      newArray.push(currentProject);
+      console.log(projects)
+      return newArray;
+    })
   }
 
   return (
@@ -32,11 +42,7 @@ const Project = ({ currentProject, setCurrentProject, handleDelete }) => {
         <p className="mb-4 text-stone-400">{formattedDate}</p>
         <p className="text-stone-600 whitespace-pre-wrap">{currentProject.description}</p>
       </header>
-      <div>
-        <Input ref={input} label='New Task' type='text' />
-        <button onClick={addTask} >Add Task</button>
-        {currentProject.tasks.map((task) => <h4>{task}</h4>)}
-      </div>
+      <Tasks ref={input} addTask={addTask} currentProject={currentProject} />
     </div>
   )
 }
